@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in · KURAL.com</title>
+  <style>
+    :root { --bg:#0b0f15; --card:#121826; --ink:#f7e9f2; --muted:#93a1b3; --accent:#5bbcff; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 30%, rgba(15, 40, 100, 0.35), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(10, 30, 80, 0.3), transparent 60%),
+      
+        radial-gradient(circle at 50% 80%, rgba(20, 50, 120, 0.3), transparent 60%),
+        radial-gradient(1200px 800px at 70% -10%,
+            #0d1b5e 0%,   /* deep royal navy */
+            #0a1440 40%,  /* darker blue */
+            #060c2c 75%,  /* very dark midnight blue */
+            #000000 100%  /* black edge */
+        );
+      background-blend-mode: screen;
+      display: grid;
+      place-items: center;
+    }
+    .card {
+      width: 100%; max-width: 420px;
+      background: var(--card);
+      border: 1px solid #1c2536;
+      border-radius: 16px;
+      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+      padding: 28px;
+    }
+    h1 { margin: 0 0 6px; font-size: 24px; }
+    p.sub { margin: 0 0 18px; color: var(--muted); }
+    .btn {
+      width: 100%;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border: 1px solid #2a3650; background: #0f1522;
+      padding: 12px 14px; border-radius: 12px;
+      color: var(--ink); text-decoration: none; font-weight: 700;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { background: #111a2b; border-color: #324362; }
+    .btn:active { transform: translateY(1px); }
+    .btn img { width: 20px; height: 20px; display: inline-block; }
+    .or {
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px;
+      margin: 18px 0; color: var(--muted); font-size: 13px;
+    }
+    .or::before, .or::after { content: ""; height: 1px; background: #22304a; }
+    .foot { margin-top: 16px; color: var(--muted); font-size: 12px; text-align: center; }
+    .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .logo {
+      width: 90px; height: 90px; border-radius: 70px;
+      background: linear-gradient(145deg, #1a2438, #0f1522); border: 1px solid #22304a;
+      display: grid; place-items: center;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 70px;
+    }
+    .fields { display: grid; gap: 10px; }
+    input {
+      width: 100%; padding: 12px 14px; border-radius: 12px;
+      border: 1px solid #243047; background: #0f1522; color: var(--ink);
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button.primary, a.signup-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent);
+      color: #05121e;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      min-width: 120px;
+      transition: background 0.3s ease;
+    }
+    button.primary:hover, a.signup-btn:hover {
+      background: #4aa8e5;
+    }
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 18px; /* Adjust this value for more or less spacing */
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><img src="logo.png" alt=""></div>
+      <div>
+        <h1 id="title">Welcome to KURAL PORTAL</h1>
+        <p class="sub">Report issues and track resolutions</p>
+      </div>
+    </div>
+
+    <form action="/login" method="post" class="fields" novalidate>
+      <label>
+        <span class="sr-only">Email</span>
+        <input type="email" name="email" placeholder="email@example.com" autocomplete="username">
+      </label>
+      <label>
+        <span class="sr-only">Password</span>
+        <input type="password" name="password" placeholder="Password" autocomplete="current-password">
+      </label>
+
+      <div class="button-row">
+        <button class="primary" type="submit">Sign in</button>
+        <a class="signup-btn" href="signup.html">Sign up</a>
+      </div>
+    </form>
+
+    <div class="or">or</div>
+
+    <div class="social-buttons">
+      <!-- Google sign-in -->
+      <a class="btn" href="www.google.com" aria-label="Continue with Google">
+        <img src="./download-removebg-preview.png" alt="" />
+        Continue with Google
+      </a>
+
+      <!-- Facebook sign-in -->
+      <a class="btn facebook" href="/auth/facebook" aria-label="Continue with Facebook">
+        <img src="./4a4c224a0c6667178bebdfa3b6bdb92b-removebg-preview.png" alt="" />
+        Continue with Facebook
+      </a>
+
+      <!-- Twitter sign-in -->
+      <a class="btn twitter" href="/auth/twitter" aria-label="Continue with Twitter">
+        <img src="./download-removebg-preview (1).png" alt="" />
+        Continue with Twitter
+      </a>
+    </div>
+
+    <p class="foot">By continuing, you agree to our Terms & Privacy.</p>
+  </main>
+</body>
+</html>

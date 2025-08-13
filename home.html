@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KURAL · Home</title>
+  <style>
+    :root {
+      --bg:#0b0f15;
+      --card:#121826;
+      --ink:#f7e9f2;
+      --muted:#93a1b3;
+      --accent:#5bbcff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 30%, rgba(15, 40, 100, 0.35), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(10, 30, 80, 0.3), transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(20, 50, 120, 0.3), transparent 60%),
+        radial-gradient(1200px 800px at 70% -10%,
+            #0d1b5e 0%,
+            #0a1440 40%,
+            #060c2c 75%,
+            #000000 100%);
+      background-blend-mode: screen;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 10px 20px;
+      border-bottom: 1px solid #1c2536;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header .logo img {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    header .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    header .profile {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--card);
+      border-right: 1px solid #1c2536;
+      padding-top: 60px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid #1c2536;
+    }
+    .sidebar a:hover {
+      background: #111a2b;
+    }
+    .back-btn {
+      font-weight: bold;
+      background: #0f1522;
+    }
+
+    /* Main Layout */
+    .container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .feed {
+      flex: 2;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .post {
+      background: var(--card);
+      border: 1px solid #1c2536;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14px;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .post-header img {
+      width: 35px; height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .post-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .post-actions span {
+      cursor: pointer;
+    }
+    .post-actions span:hover {
+      color: var(--accent);
+    }
+
+    /* Stats Panel */
+    .stats {
+      flex: 1;
+      background: var(--card);
+      border-left: 1px solid #1c2536;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .stat-card {
+      background: #0f1522;
+      border: 1px solid #2a3650;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .stat-card h3 {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .progress {
+      height: 8px;
+      background: #243047;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+      <img src="logo.png" alt="Logo">
+      <h2>KURAL</h2>
+    </div>
+    <img src="profile.jpg" alt="Profile" class="profile">
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar hidden" id="sidebar">
+      <a href="javascript:void(0)" class="back-btn" onclick="toggleSidebar()">← Back</a>
+      <a href="#">Home</a>
+      <a href="#">Trending</a>
+      <a href="#">My Taluk</a>
+      <a href="#">Preference</a>
+      <a href="#">Settings</a>
+    </nav>
+
+    <!-- Feed -->
+    <div class="feed">
+      <div class="post">
+        <div class="post-header">
+          <img src="user1.jpg" alt="User">
+          <div>
+            <strong>John Doe</strong><br>
+            <small>2 hours ago</small>
+          </div>
+        </div>
+        <p>Road repair issue in my area has been pending for over 3 months.</p>
+        <div class="post-actions">
+          <span>👍 Like</span>
+          <span>👎 Dislike</span>
+          <span>💬 Comment</span>
+          <span>🔁 Repost</span>
+          <span>📤 Share</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-header">
+          <img src="user2.jpg" alt="User">
+          <div>
+            <strong>Jane Smith</strong><br>
+            <small>1 day ago</small>
+          </div>
+        </div>
+        <p>Water supply has improved in our locality after complaints.</p>
+        <div class="post-actions">
+          <span>👍 Like</span>
+          <span>👎 Dislike</span>
+          <span>💬 Comment</span>
+          <span>🔁 Repost</span>
+          <span>📤 Share</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Problems Raised</h3>
+        <p>120</p>
+      </div>
+      <div class="stat-card">
+        <h3>Problems Attended</h3>
+        <p>95</p>
+      </div>
+      <div class="stat-card">
+        <h3>Success Rate</h3>
+        <div class="progress">
+          <div class="progress-bar" style="width: 79%;"></div>
+        </div>
+        <p>79%</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

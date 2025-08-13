@@ -15,7 +15,6 @@
       background:
         radial-gradient(circle at 20% 30%, rgba(15, 40, 100, 0.35), transparent 60%),
         radial-gradient(circle at 80% 20%, rgba(10, 30, 80, 0.3), transparent 60%),
-      
         radial-gradient(circle at 50% 80%, rgba(20, 50, 120, 0.3), transparent 60%),
         radial-gradient(1200px 800px at 70% -10%,
             #0d1b5e 0%,   /* deep royal navy */
@@ -77,7 +76,7 @@
       gap: 10px;
       margin-top: 10px;
     }
-    button.primary, a.signup-btn {
+    a.primary, a.signup-btn {
       padding: 10px 20px;
       border-radius: 12px;
       border: none;
@@ -91,13 +90,13 @@
       min-width: 120px;
       transition: background 0.3s ease;
     }
-    button.primary:hover, a.signup-btn:hover {
+    a.primary:hover, a.signup-btn:hover {
       background: #4aa8e5;
     }
     .social-buttons {
       display: flex;
       flex-direction: column;
-      gap: 18px; /* Adjust this value for more or less spacing */
+      gap: 18px;
       margin-bottom: 10px;
     }
   </style>
@@ -112,7 +111,7 @@
       </div>
     </div>
 
-    <form action="/login" method="post" class="fields" novalidate>
+    <form class="fields" novalidate>
       <label>
         <span class="sr-only">Email</span>
         <input type="email" name="email" placeholder="email@example.com" autocomplete="username">
@@ -123,7 +122,7 @@
       </label>
 
       <div class="button-row">
-        <button class="primary" type="submit">Sign in</button>
+        <a class="primary" href="home.html">Sign in</a>
         <a class="signup-btn" href="signup.html">Sign up</a>
       </div>
     </form>
@@ -132,7 +131,7 @@
 
     <div class="social-buttons">
       <!-- Google sign-in -->
-      <a class="btn" href="www.google.com" aria-label="Continue with Google">
+      <a class="btn" href="https://www.google.com" aria-label="Continue with Google">
         <img src="./download-removebg-preview.png" alt="" />
         Continue with Google
       </a>
